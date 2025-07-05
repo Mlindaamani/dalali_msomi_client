@@ -2,6 +2,7 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:fixy/services/property_service.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class PropertyProvider with ChangeNotifier {
   final PropertyService _propertyService = PropertyService();
@@ -62,6 +63,10 @@ class PropertyProvider with ChangeNotifier {
       _propertyImages.addAll(result.files);
       notifyListeners();
     }
+  }
+
+  Future<void> requestPermissions() async {
+    await [Permission.camera, Permission.storage].request();
   }
 
   Future<void> pickContractFile(String contractType) async {
