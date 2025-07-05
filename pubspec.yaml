@@ -1,0 +1,61 @@
+name: fixy
+description: "Find Probs with Fixy"
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.2
+  http: ^0.13.3
+  file_picker: ^10.2.0
+  fluttertoast: ^8.2.12
+  url_launcher: ^6.3.1
+  google_nav_bar: ^5.0.7
+  flutter_secure_storage: ^8.0.0
+  liquid_pull_to_refresh: ^3.0.1
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/images/fixy.png"
+  adaptive_icon_foreground: "assets/images/fixy.png"
+  adaptive_icon_background: "#4F46E5"
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/images/fixy.png
+  branding_text: "Fixy"
+  branding_text_style:
+    color: "#4F46E5"
+    font-size: 18
+    font-weight: bold
+  branding_mode: bottom
+  android_gravity: center
+  fullscreen: true
+
+  android_12:
+    image: assets/images/fixy.png
+    icon_background_color: "#ffffff"
+    branding_text: "Fixy"
+    branding_text_style:
+      color: "#4F46E5"
+      font-size: 18
+      font-weight: bold
+    color: "#ffffff"
