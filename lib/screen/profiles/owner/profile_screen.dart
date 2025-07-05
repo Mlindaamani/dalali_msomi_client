@@ -163,7 +163,7 @@ class ProfileScreen extends StatelessWidget {
                     Icons.settings,
                     'Settings',
                     onTap: () {
-                      Navigator.pushNamed(context, '/settings');
+                      Navigator.pushNamed(context, '/stepper');
                     },
                   ),
                   const SizedBox(height: 16),

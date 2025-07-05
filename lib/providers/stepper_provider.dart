@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-class FormData with ChangeNotifier {
+class FormStepProvider with ChangeNotifier {
   int currentStep = 0;
   Map<String, String> preliminaryInfo = {};
   Map<String, String> citizenshipInfo = {};
   List<String> uploadedFiles = [];
+
+  Future<void> requestPermissions() async {
+    await [Permission.camera, Permission.storage].request();
+  }
 
   void nextStep() {
     if (currentStep < 2) {

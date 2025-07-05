@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 class PreliminaryInfoStep extends StatefulWidget {
   @override
-  State<PreliminaryInfoStep> createState() => _PreliminaryInfoStepState();
+  _PreliminaryInfoStepState createState() => _PreliminaryInfoStepState();
 }
 
 class _PreliminaryInfoStepState extends State<PreliminaryInfoStep> {
@@ -14,43 +14,61 @@ class _PreliminaryInfoStepState extends State<PreliminaryInfoStep> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              controller: _nameController,
-              decoration: InputDecoration(labelText: 'Name'),
-              validator: (value) =>
-                  value!.isEmpty ? 'Please enter your name' : null,
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextFormField(
+            controller: _nameController,
+            decoration: InputDecoration(
+              labelText: 'Name',
+              prefixIcon: Icon(Icons.person, color: Colors.indigo[600]),
             ),
-            TextFormField(
-              controller: _emailController,
-              decoration: InputDecoration(labelText: 'Email'),
-              validator: (value) =>
-                  value!.isEmpty ? 'Please enter your email' : null,
+            validator: (value) =>
+                value!.isEmpty ? 'Please enter your name' : null,
+          ),
+          SizedBox(height: 16),
+          TextFormField(
+            controller: _emailController,
+            decoration: InputDecoration(
+              labelText: 'Email',
+              prefixIcon: Icon(Icons.email, color: Colors.indigo[600]),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
+            validator: (value) =>
+                value!.isEmpty ? 'Please enter your email' : null,
+          ),
+          SizedBox(height: 24),
+          Align(
+            alignment: Alignment.centerRight,
+            child: ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  Provider.of<FormData>(
+                  Provider.of<FormStepProvider>(
                     context,
                     listen: false,
                   ).updatePreliminaryInfo({
                     'name': _nameController.text,
                     'email': _emailController.text,
                   });
-                  Provider.of<FormData>(context, listen: false).nextStep();
+                  Provider.of<FormStepProvider>(
+                    context,
+                    listen: false,
+                  ).nextStep();
                 }
               },
               child: Text('Next'),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    super.dispose();
   }
 }

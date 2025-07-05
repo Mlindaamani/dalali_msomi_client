@@ -36,14 +36,17 @@ class _CitizenshipInfoStepState extends State<CitizenshipInfoStep> {
             ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  Provider.of<FormData>(
+                  Provider.of<FormStepProvider>(
                     context,
                     listen: false,
                   ).updateCitizenshipInfo({
                     'country': _countryController.text,
                     'passport': _passportController.text,
                   });
-                  Provider.of<FormData>(context, listen: false).nextStep();
+                  Provider.of<FormStepProvider>(
+                    context,
+                    listen: false,
+                  ).nextStep();
                 }
               },
               child: Text('Next'),

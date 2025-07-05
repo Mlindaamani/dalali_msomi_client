@@ -23,7 +23,6 @@ class _PropertyListScreenState extends State<PropertyListScreen> {
     'Commercial',
     'Industrial',
     'Rentals',
-    'PropertyList_on_charge',
   ];
 
   List<Property> _allProperties = [];
